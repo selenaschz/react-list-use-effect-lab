@@ -4,8 +4,11 @@ function ContactSearch({ filter, onFilter }) {
         onFilter({...filter, [name]: value}) //Pass the new filter to Home (parent) -> Initial filter + name: value
     }
   return (
-    <div className="mb-4">
-        <input placeholder="Find by name..." name="name" onChange={onFilterName}></input>
+    <div className="input-group mb-3">
+      <span className="input-group-text" id="basic-addon1">
+        <i className="fa fa-search" aria-hidden="true"></i>
+      </span>
+      <input className="form-control" placeholder="Find by name..." type="text" name="name" onChange={onFilterName}></input>
     </div>
   )
 }

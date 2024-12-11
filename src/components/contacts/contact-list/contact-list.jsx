@@ -18,7 +18,7 @@ function ContactList({ filter = {} }) {
     }
 
     return (
-        <div className="d-flex flex-column gap-4">
+        <div className="d-flex gap-3 flex-wrap">
             { contacts.map( contact => (
                 <ContactItem key= {contact.id} contact= { contact } onDelete={onDeleteContact}/>
             ))}

@@ -1,6 +1,6 @@
 function PageLayout({ children }) {
     return (
-        <div className="container p-4"> 
+        <div className="container py-4"> 
             {children} 
         </div>
     );
