@@ -1,10 +1,16 @@
-import ContactList from "../../contacts/contact-list/contact-list";
+import { useState } from "react";
+import { ContactList, ContactSearch } from "../../contacts"
 import { PageLayout } from "../../layouts"
 
 function Home() {
+    const [filter, setFilter] = useState({});
+
+    const onFilter = (filter) => setFilter(filter);
+
     return (
         <PageLayout>
-            <ContactList />
+            <ContactSearch filter={filter} onFilter={onFilter} />
+            <ContactList filter={filter} />
         </PageLayout>
     );
 }

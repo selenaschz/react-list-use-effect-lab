@@ -2,17 +2,25 @@ import usersData from "../../../data/users.json"
 import { useEffect, useState } from "react";
 import ContactItem from "../contact-item/contact-item"
 
-function ContactList() {
+function ContactList({ filter = {} }) {
     const [contacts, setContacts] = useState([])
 
     useEffect(() => {
-        setContacts(usersData);
-    }, [] )
+        const filterContacts = usersData.filter( contact => 
+            filter.name === undefined || contact.name.toLocaleLowerCase().includes( filter.name.toLocaleLowerCase() )
+        )
+        setContacts(filterContacts);
+    }, [filter] )
+
+    const onDeleteContact = (idContact) => {
+        const newListContact = contacts.filter( contact => contact.id !== idContact )
+        setContacts( newListContact )
+    }
 
     return (
         <div className="d-flex flex-column gap-4">
             { contacts.map( contact => (
-                <ContactItem key= {contact.id} contact= { contact } />
+                <ContactItem key= {contact.id} contact= { contact } onDelete={onDeleteContact}/>
             ))}
         </div>
     )
